@@ -8,5 +8,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "vite-node": "0.34.6",
+    "whatsapp-web.js": "1.22.1"
   }
 }
