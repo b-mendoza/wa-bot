@@ -1,11 +1,10 @@
 {
   "name": "wa-bot",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [],
   "license": "ISC",
-  "author": "",
-  "main": "index.js",
+  "author": "Bryan Mendoza",
+  "type": "module",
+  "main": "./src/main.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
