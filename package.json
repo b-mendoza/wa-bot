@@ -6,7 +6,7 @@
   "type": "module",
   "main": "./src/main.ts",
   "scripts": {
-    "dev": "nodemon --exec \"node --loader ts-node/esm ./src/main.ts\" --watch \"./src/**/*\""
+    "dev": "nodemon --exec \"node --loader ts-node/esm ./src/main.ts\" --ext \"ts\" --watch \"./src/**/*\""
   },
   "dependencies": {
     "whatsapp-web.js": "1.22.1"
