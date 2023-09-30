@@ -62,9 +62,7 @@ export const handler = async (message: Message) => {
   const chat = await message.getChat();
 
   if (chat.isGroup) {
-    const willReply = isAllowedGroup(chat.name);
-
-    if (!willReply) {
+    if (!isAllowedGroup(chat.name)) {
       console.error(`Ignoring message from ${chat.name} group`);
 
       return;
