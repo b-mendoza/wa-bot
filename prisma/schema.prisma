@@ -13,19 +13,22 @@ datasource db {
 // a `name` field was not added since a user can constantly change their name,
 // so the data associated to the user returned by WhatsApp will be use as the
 // source of truth
+
+// to honor explicitness, fields not created or mantained by the database will be
+// prefixed with `external__`
 model User {
-  id         String   @id @default(cuid())
-  whatsAppId String   @unique
-  counter    Counter?
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id                   String   @id @default(cuid())
+  external__whatsAppId String   @unique
+  counter              Counter?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
 }
 
 model Counter {
-  id        Int      @id
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String   @unique
-  count     Int      @default(0)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id             Int      @id
+  user           User     @relation(fields: [userWhatsAppId], references: [external__whatsAppId])
+  userWhatsAppId String   @unique
+  count          Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
