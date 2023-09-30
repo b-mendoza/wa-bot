@@ -14,14 +14,14 @@ datasource db {
 // so the data associated to the user returned by WhatsApp will be use as the
 // source of truth
 model User {
-  id          String       @id @default(cuid())
-  whatsAppId  String       @unique
-  PoopCounter PoopCounter?
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+  id         String   @id @default(cuid())
+  whatsAppId String   @unique
+  counter    Counter?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
 
-model PoopCounter {
+model Counter {
   id        Int      @id
   user      User     @relation(fields: [userId], references: [id])
   userId    String   @unique
