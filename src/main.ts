@@ -1,5 +1,8 @@
-import QRCode from 'qrcode';
+import 'dotenv/config';
+
 import WAWebBot, { Client } from 'whatsapp-web.js';
+import { handler as onMessageHandler } from './handlers/on-message.handler.ts';
+import { handler as onQRHandler } from './handlers/on-qr.handler.ts';
 
 const client = new Client({
   authStrategy: new WAWebBot.LocalAuth(),
@@ -10,22 +13,7 @@ const client = new Client({
 
 client.initialize();
 
-client.on('qr', (qr) => {
-  QRCode.toString(
-    qr,
-    {
-      small: true,
-      type: 'terminal',
-    },
-    (error, url) => {
-      if (error instanceof Error) {
-        throw error;
-      }
-
-      console.log(url);
-    },
-  );
-});
+client.on('qr', onQRHandler);
 
 client.on('auth_failure', (error) => {
   console.log({ error });
@@ -39,6 +27,4 @@ client.on('ready', () => {
   console.log('Client is ready!');
 });
 
-client.on('message', (message) => {
-  console.log({ message: message.body });
-});
+client.on('message', onMessageHandler);
