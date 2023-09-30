@@ -1,4 +1,5 @@
 .DS_Store
 .env*.local
+.wwebjs_*
 *.tsbuildinfo
 node_modules
