@@ -10,6 +10,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// a `name` field was not added since a user can constantly change their name,
+// so the data associated to the user returned by WhatsApp will be use as the
+// source of truth
 model User {
   id          String       @id @default(cuid())
   whatsAppId  Int          @unique
